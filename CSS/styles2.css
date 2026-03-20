@@ -1,0 +1,697 @@
+/* Google Fonts */
+/* @ Import is a CSS at rule and is used to import style rules from other valid stylesheets */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/*A CSS pseudo-class element that matches the root element of a tree representing the document.*/
+:root{ 
+    /* Colours */
+    /* background colour */
+    --bg: #05060b;
+    /* background colour for cards */
+    --bg-card: rgba(10, 12, 22, 0.78);
+
+    /* main text colour */
+    --ink: #e8eefc;
+
+    /*muted text colour  !!! learn what this does*/
+    --ink-muted: rgba(232, 238, 252, 0.65);
+
+    /* cyan */
+    --cyan: #35d2ff;
+
+    /* blue */
+    --blue: #4f7cff;
+
+    /* purple */
+    --purple: #8b5cf6;
+
+    /* border Colour */
+    --border:rgba(53, 210, 255, 0.18);
+
+    /* border colour on hover */
+    --border-hover: rgba(53, 210, 255, 0.45);
+
+
+    /* Fonts */
+    --font-main: 'Space Grotesk', system-ui,sans-serif;
+
+
+    /* what do we use this for? */
+    --font-mono: 'Space Mono', ui-monospace, monospace;
+
+
+    /* Spacing scale */
+    --sp-xs: 0.25rem;
+    --sp-sm: 0.5rem;
+    --sp-md: 1rem;
+    --sp-lg: 1.75rem;
+    --sp-xl: 3rem;
+    --sp-2xl: 5rem;
+
+    /* Border radius scale: */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+
+    --radius-pill:62.5rem;
+
+
+    /* Transition Timings: */
+    --ease: 160ms ease;
+}
+
+
+/* BASE CSS FOR THE PAGE */
+html{
+    scroll-behavior:smooth; /* Note that this property doesnt activate when the user scrolls 
+    but when the user clicks on an anchor link that takes them to a diferent part of the page */
+    font-size: 1rem;
+}
+
+body{
+    font-family: var(--font-main);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;  /* here the unitless value represents the number being multiplied to the fonts size  */
+    overflow-x: hidden; /* this prevents horizontal scrolling when the screen is too small and the content overflows */
+    background-image: 
+    /* Here we are creating our own image using CSS gradients, 
+    we are layering 3 different gradients on top of each other to create a more complex background image. */
+    radial-gradient(75rem 50rem at 30% 20%, rgba(79,124,255,0.14), transparent 60%),
+    radial-gradient(56.25rem 43.75rem at 70% 65%, rgba(139,92,246,0.13), transparent 55%),
+    linear-gradient(180deg, #05060b, #070a14);
+}
+
+/* Layout Wrapper: Makes the page content centered with a maximum width */
+.page-wrap{
+    position: relative;
+    z-index: 1; /* this ensures that the content is above the background image */
+    max-width: 68.75rem;
+    margin: 0 auto;
+    padding: 0 var(--sp-lg);
+}
+
+
+/* Header && Nav */
+header{
+    position: sticky; /* this makes the header stick to the top of the page when the user scrolls down */
+    top: 0; /* this is the distance from the top of the page that the header will stick to (which is 0)*/
+    z-index: 100; 
+    backdrop-filter: blur(0.75rem); /* creates a blur/ opaque view of the background of the header when the header is scrolled down*/
+    -webkit-backdrop-filter: blur(0.75rem); /* this is to support the blurring for older versions of search engines especially for safari */
+    background-color: rgba(5, 6, 11, 0.82);
+    border-bottom: 0.0625rem solid var(--border);
+}
+
+/* Aligning the items of the navbar and the logo */
+header .page-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--sp-md);
+    padding-bottom: var(--sp-md);
+}
+
+.brand{
+    font-family:var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700; /* sets the boldness of the font*/
+    color: var(--cyan);
+    letter-spacing: 0.03125rem;;
+
+}
+
+/* Making the navbar items horizontal */
+nav ul{
+    display: flex;
+    gap: var(--sp-lg);
+    align-items: center;
+}
+
+
+nav ul li a{
+    font-size: 1rem;
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    padding: var(--sp-xs);
+    border-radius: var(--radius-sm);
+    transition: color var(--ease), background var(--ease); /* this makes the color and background change smoothly when the user hovers over them*/
+    position: relative;
+}
+
+/* This is to create a custome underline for the navbar items*/
+nav ul li a::after{
+    content: ''; /* this is required to create a pseudo element, it creates an empty element after the anchor tag */
+    position: absolute; 
+    left: var(--sp-sm);
+    right: var(--sp-sm);
+    bottom: 0.125rem;
+    height: 0.0625rem;
+    background: var(--cyan);
+    transform: scaleX(0); /* this makes the underline invisible by scaling it down to 0 */
+    transform-origin: left; /* this makes the underline appear from the left when the user hovers over the navbar item */
+    transition: transform var(--ease); /* this makes the underline appear smoothly when the user hovers over the navbar item */
+}
+
+nav ul li a:hover{
+    color: var(--ink);
+}
+
+nav ul li a:hover::after{
+    transform: scaleX(1); /* this makes the underline visible by scaling it up to its original size */
+}
+
+nav ul li a.active{ /* this is to style the navbar webpage which is active right now */
+    color: var(--cyan);
+}
+
+
+/* Hero Section */
+#hero{
+    min-height: 100vh; /* this makes the hero section take up the full height of the viewport */
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--sp-2xl) 0;
+    position: relative;
+}
+
+
+/* Styles and animates the hero kicker class  */
+.hero-kicker{
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--cyan);
+    letter-spacing: 0.125rem;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-md);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards; /* animation between styles Total animation time: 0.8s delay of animation: 0.3s, forwards: keep the final state of the animation(opacity =1) */
+}
+
+
+/* Styles and animated the hero name class */
+.hero-name{
+    font-size: clamp(2.8rem, 7vw, 5.5 rem); /* clamp basically makes it so that the font size is clamped between 2.8rem, 5.5 rem and the preffered value is 7.5view width*/
+    font-weight: 700;
+    line-height: 1.05; /* The height of the line is 1.05 multiplied to the font size*/
+    letter-spacing: -0.0625rem;
+    margin-bottom: var(--sp-md);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+}
+
+/* Making my name look cool by putting a linear gradient on it */
+.hero-name span {
+    background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the texts colour transparent to not affect the gradient */
+    background-clip:text; /* Clips the gradient to only the text*/
+}
+
+.hero-subtitle{
+    font-size:1.15rem;
+    color: var(--ink-muted);
+    max-width:52ch; /* character width where the size is 52 characters long of the current font size*/
+    margin-bottom:var(--sp-xl);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+}
+
+.hero-actions{
+    display: flex;
+    gap: var(--sp-md);
+    flex-wrap: wrap; /* it allows the items to wrap around in the next line depending on the space */
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.9s forwards;
+}
+
+
+
+/* Button sectionss */
+.btn{
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    padding: 0.75rem 1.35rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform var(--ease), box-shadow var(--ease),
+                background var(--ease), border-color var(--ease);
+}
+
+.btn-primary{
+    background: var(--cyan);
+    color: #05060b;
+    border: 0.0625rem solid var(--cyan);
+}
+
+.btn-primary:hover{
+    background: #fff;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.5rem 1.75rem rgba(53, 210, 255, 0.30);
+}
+
+
+.btn-ghost{
+    background: transparent;
+    color: var(--ink);
+    border: 0.0625rem solid var(--border);
+}
+
+.btn-ghost:hover{
+    border-color: var(--boreder-hover);
+    transform: translateY(-0.125rem);
+}
+
+
+/* SECTIONS */
+.section{
+    padding: var(--sp-2xl) 0;
+    position: relative;
+}
+
+.section-label{
+    font-family: var(--font-mono);
+    font-size:0.75rem;
+    color: var(--cyan);
+    letter-spacing: 0.1875rem;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-sm);
+}
+
+.section-title{
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    margin-bottom: var(--sp-lg);
+    line-height: 1.15;
+}
+
+.section-divider{
+    width: 3rem;
+    height: 0.125rem;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+    margin-bottom: var(--sp-xl);
+    border-radius: var(--radius-pill);
+}
+
+
+/* SECTION HEADER WITH ACTION BUTTON */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--sp-lg);
+    margin-bottom: var(--sp-lg);
+}
+
+.section-header-content {
+    flex: 1;
+}
+
+.section-header-action {
+    flex-shrink: 0;
+}
+
+
+/* Glass Card Styles: basically making the sections a bit more sophisticated */
+.glass-card{
+    background: var(--bg-card);
+    border: 0.0625rem solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-lg);
+    backdrop-filter: blur(0.625rem); /* creates a blurry backghround like a frosted glass*/
+    -webkit-backdrop-filter: blur(0.625rem);
+    transition: border-color var(--ease), transform var(--ease),
+                box-shadow var(--ease); /* sets it so that 
+    when a transition happen where the border-color, box0shadow and transform property changes then it will transition with the var(--ease)*/
+}
+
+.glass-card:hover{
+    border-color: var(--border-hover);
+    transform: translateY(-0.1875rem);
+    box-shadow:0 1.25rem 3.75rem rgba(53, 210, 255, 0.08);
+}
+
+/*LATER When i use js i will use this class to make the glass cards hidden/visible using animations */
+.reveal{
+    opacity: 1;
+    transform:translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+
+/* ABOUT SECTION */
+#about .about-grid{
+    display: grid;
+    grid-template-columns: 1fr 18.75rem; /* fr: fractional unit it takes 1 part of the whole available space */
+    gap: var(--sp-xl);
+    align-items: center;
+}
+
+#about figure img{
+    border-radius: var(--radius-lg);
+    width: 100%;
+    border: 0.0625rem solid var(--border);
+}
+
+#about figcaption{
+    font-family:var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    margin-top: var(--sp-sm);
+    text-align: center;
+}
+
+/* SKILLS SECTION */
+#skills .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+    gap: var(--sp-md);
+}
+
+.skill-category h3{
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--cyan);
+    letter-spacing: 0.09375rem;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-md);
+}
+
+.skill-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-sm);
+}
+
+.tag{
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-pill);
+    background: rgba(53, 210, 255, 0.08);
+    border: 0.0625rem solid rgba(53, 210, 255, 0.20);
+    color: var(--ink);
+    transition: background var(--ease), border-color var(--ease);
+}
+
+.tag:hover{
+    background-color: rgba(53, 210, 255, 0.16);
+    border-color: rgba(53, 210, 255, 0.40);
+}
+
+
+
+/* EDUCATION SECTION */
+.timeline{
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
+    position: relative;
+    padding-left: var(--sp-xl);
+}
+
+/* Creating a timeline line */
+.timeline::before{
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 0.0625rem;
+    background: linear-gradient(to bottom, var(--cyan), transparent);
+}
+
+.timeline-item{
+    position: relative;
+}
+
+
+/* Making the bullet points for each timeline item */
+.timeline-item::before{
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--sp-xl) + 0.10rem); /* We use calc to calculate the position to left for each dot of each timeline-item using its padding var(--sp-xl */
+    top: 0.5rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background: var(--cyan);
+    border: 0.125rem solid var(--bg);
+    box-shadow: 0 0 0.5rem var(--cyan);
+}
+
+.timeline-date{
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--cyan);
+    margin-bottom: var(--sp-xs);
+}
+
+.timeline-title{
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: var(--sp-xs);
+}
+
+.timeline-place{
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    margin-bottom: var(--sp-sm);
+}
+
+
+/* CONTACT SECTION: Makes the contents of organised in different columns */
+
+ #contact .contact-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-xl);
+    align-items: start;
+ }
+
+
+ /* Contact Details Section */
+
+.contact-info-heading{
+    margin-bottom: var(--sp-md);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.contact-info-item{
+    color: var(--ink-muted);
+    margin-bottom: var(--sp-sm);
+}
+
+
+ /* Form Section */
+ .form-group{
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+    margin-bottom: var(--sp-md);
+ }
+
+ .form-group label{
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--cyan);
+    letter-spacing: 0.0625rem;
+    text-transform: uppercase;
+ }
+
+ .form-group input, .form-group textarea{
+    background: rgba(10, 12, 22, 0.90);
+    border: 0.0625rem solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem var(--sp-md);
+    color: var(--ink);
+    font-size: 0.9375rem;
+    font-family: var(--font-main);
+    transition: border-color var(--ease), box-shadow var(--ease);
+    width: 90%;
+ }
+
+
+ .form-group input:focus, .form-group textarea:focus{
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 0.1875rem rgba(53, 210, 255, 0.15);
+    outline: none;
+ }
+ 
+ .form-group textarea{
+    resize: vertical;
+    min-height: 8.75rem;
+ }
+
+ .form-group input:invalid:not(:placeholder-shown){ /* Here we change the border when the input is invalid and there has been something typed */
+    border-color: #f87171; ;
+ }
+
+/* Here we change the border when the input is valid and there has been something inputted */
+ .form-group input:valid:not(:placeholder-shown){
+    border-color: #34d399;;
+ }
+
+
+/* ASIDE SECTION */
+aside.login-status{
+    background: var(--bg-card);
+    border: 0.0625rem solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-md) var(--sp-lg);
+    backdrop-filter: blur(0.5rem);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+    margin: var(--sp-lg) auto;
+    max-width: 68.75rem;
+}
+
+aside.login-status a{
+    color: var(--cyan);
+}
+
+
+/* FOOTER SECTION */
+
+footer{
+    border-top: 0.0625rem solid var(--border);
+    padding: var(--sp-xl) 0;
+    text-align: center;
+}
+footer .page-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-md);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--sp-lg);
+}
+
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--ink-muted);
+  transition: color var(--ease);
+}
+
+.footer-links a:hover { color: var(--cyan); }
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(232, 238, 252, 0.35);
+}
+
+
+/* Blog Entry CSS */
+.blog-entry {
+  border-bottom: 0.0625rem solid var(--border);
+  padding-bottom: var(--sp-lg);
+  margin-bottom: var(--sp-lg);
+}
+
+.blog-entry:last-of-type { border-bottom: none; }
+
+.blog-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan);
+  margin-bottom: var(--sp-sm);
+}
+
+.blog-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: var(--sp-sm);
+}
+
+.blog-body {
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+
+
+/* LOGIN ENTRY Page CSS */
+.login-wrap {
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.login-status-msg {
+  margin-top: var(--sp-md);
+}
+
+
+/* ADD ENTRY FILE */
+
+.entry-action{
+    display: flex;
+    gap: var(--sp-md);
+    flex-wrap: wrap;
+}
+
+.aside-status{
+    margin-bottom: var(--sp-lg);
+}
+
+
+
+/* PORTFOLIO SECTION */
+#portfolio .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: var(--sp-lg);
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--sp-md);
+    color: var(--ink);
+}
+
+.project-description {
+    font-size: 0.9375rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    margin-bottom: var(--sp-md);
+    flex-grow: 1;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-sm);
+    margin-bottom: var(--sp-md);
+}
+
+.project-links {
+    display: flex;
+    gap: var(--sp-md);
+    flex-wrap: wrap;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(1.25rem); }
+  to   { opacity: 1; transform: translateY(0);        }
+}

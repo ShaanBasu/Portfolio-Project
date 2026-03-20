@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Shaan Basu</title>
+  <link rel="stylesheet" href="CSS/reset.css">
+  <link rel="stylesheet" href="CSS/styles2.css" />
+</head>
+<body>
+
+  <header>
+    <div class="page-wrap">
+      <div class="brand">SB://portfolio</div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" aria-labelledby="blog-title">
+      <div class="page-wrap entry-wrap">
+        <p class="section-label">Blog</p>
+        <h1 id="blog-title" class="section-title">Latest Posts</h1>
+        <div class="section-divider"></div>
+
+        <aside class="login-status aside-status" aria-live="polite">
+          <p>To add a post, please <a href="login.html">log in</a>.</p>
+        </aside>
+
+        <!-- Most recent first -->
+        <article class="blog-entry glass-card reveal">
+          <p class="blog-date">14/03/2026 — 09:15</p>
+          <h2 class="blog-title">Building this portfolio</h2>
+          <p class="blog-body">
+            Phase 1 is focused on HTML5 semantics and responsive CSS layouts. Phase 2 will use PHP + MySQL
+            to store and display posts dynamically.
+          </p>
+        </article>
+
+        <article class="blog-entry glass-card reveal">
+          <p class="blog-date">10/03/2026 — 18:40</p>
+          <h2 class="blog-title">Learning CSS Grid</h2>
+          <p class="blog-body">
+            CSS Grid makes it easy to build responsive layouts using repeat(auto-fit, minmax(...)).
+          </p>
+        </article>
+
+        <article class="blog-entry glass-card reveal">
+          <p class="blog-date">02/03/2026 — 12:05</p>
+          <h2 class="blog-title">Why semantic HTML matters</h2>
+          <p class="blog-body">
+            Semantic elements improve accessibility, SEO, and maintainability by giving structure and meaning
+            to your page content.
+          </p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page-wrap">
+      <p class="footer-copy">&copy; 2026 Shaan Basu</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Login — Shaan Basu</title>
+  <link rel="stylesheet" href="CSS/reset.css"> 
+  <link rel="stylesheet" href="CSS/styles2.css" />
+</head>
+<body>
+  <header>
+    <div class="page-wrap">
+      <div class="brand">SB://portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="page-wrap login-wrap">
+        <p class="section-label">Blog</p>
+        <h1 id="login-title" class="section-title">Login</h1>
+        <div class="section-divider"></div>
+
+        <div class="glass-card reveal">
+          <form action="loginProcess.php" method="post">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email"
+                placeholder="you@example.com"
+                required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password"
+                placeholder="••••••••"
+                required minlength="6" />
+            </div>
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </form>
+        </div>
+
+        <aside class="login-status login-status-msg">
+          <p>Not logged in. Please enter your credentials above.</p>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page-wrap">
+      <p class="footer-copy">&copy; 2026 Shaan Basu</p>
+    </div>
+  </footer>
+</body>
+</html>

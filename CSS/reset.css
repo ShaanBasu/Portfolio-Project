@@ -1,0 +1,12 @@
+html, body, div, span, canvas,
+header, nav, main, section, article,
+aside, footer, figure, figcaption,
+h1, h2, h3, h4, h5, h6,
+form, input, textarea, button, label,
+img, table{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
