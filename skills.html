@@ -1,116 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/styles2.css">
-    <link rel="stylesheet" href="CSS/reset.css">
-    <title>Skills — Shaan Basu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/reset.css">
+  <link rel="stylesheet" href="CSS/cosmic.css">
+  <title>Skills — Shaan Basu</title>
 </head>
 <body>
-    <!-- Header / Nav -->
-    <header>
-        <div class="page-wrap">
-            <div class="brand">SB://Portfolio</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="skills.html" class="active">Skills</a></li>
-                    <li><a href="education.html">Education</a></li>
-                    <li><a href="portfolio.html">Projects</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <div class="page-wrap">
-                <p class="section-label">02 -- Skills</p>
-                <h1 id="skills-title" class="section-title">Skills &amp; Achievements</h1>
-                <div class="section-divider"></div>
+  <!-- ── Header / Nav ── -->
+  <header>
+    <div class="page-wrap">
+      <div class="brand">SB://Portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="skills.html" class="active">Skills</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-                <div class="skills-grid reveal">
-                    <article class="glass-card skill-category">
-                        <h2>Languages</h2>
-                        <div class="skill-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Java</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">C++</span>
-                            <span class="tag">PHP</span>
-                        </div>
-                    </article>
+  <main>
 
-                    <article class="glass-card skill-category">
-                        <h2>Web Development</h2>
-                        <div class="skill-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                        </div>
-                    </article>
+    <!-- ══════════════════════════════════════════════════
+         SKILLS — purple planet · left   |   content · right
+         ══════════════════════════════════════════════════ -->
+    <section class="skills-page-hero section">
+      <div class="page-wrap" style="width:100%;">
 
-                    <article class="glass-card skill-category">
-                        <h2>Tools</h2>
-                        <div class="skill-tags">
-                            <span class="tag">Git</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">GitHub</span>
-                            <span class="tag">MySQL</span>
-                        </div>
-                    </article>
+        <p class="section-label">02 — Skills</p>
+        <h1 class="section-title">Skills &amp; Achievements</h1>
+        <div class="section-divider"></div>
 
-                    <article class="glass-card skill-category">
-                        <h2>Databases</h2>
-                        <div class="skill-tags">
-                            <span class="tag">MySQL</span>
-                        </div>
-                    </article>
+        <div class="skills-page-layout">
 
-                    <article class="glass-card skill-category">
-                        <h2>Soft Skills</h2>
-                        <div class="skill-tags">
-                            <span class="tag">Problem Solving</span>
-                            <span class="tag">Team Work</span>
-                            <span class="tag">Communication</span>
-                            <span class="tag">Adaptability</span>
-                            <span class="tag">Teamwork</span>
-                        </div>
-                    </article>
+          <!-- LEFT: sticky planet -->
+          <div class="skills-planet-side">
+            <div class="planet-scene" style="width:20rem;height:20rem;">
+              <div class="planet-ring" style="width:15rem;height:15rem;border-color:rgba(139,92,246,0.22);"></div>
+              <div class="planet-ring" style="width:17.5rem;height:17.5rem;border-color:rgba(139,92,246,0.12);"></div>
+              <div class="planet-ring" style="width:20rem;height:20rem;border-color:rgba(79,124,255,0.07);"></div>
 
-                    <article class="glass-card skill-category">
-                        <h2>Other</h2>
-                        <div class="skill-tags">
-                            <span class="tag">Responsive Design</span>
-                            <span class="tag">UI/UX Design</span>
-                            <span class="tag">Version Control</span>
-                            <span class="tag">Agile</span>
-                        </div>
-                    </article>
-                </div>
+              <!-- Constellation dots overlay -->
+              <div class="constellation-wrap"></div>
+
+              <div class="planet planet-skills"></div>
             </div>
-        </section>
-    </main>
+            <p class="planet-label">Tech &amp; Language Constellation</p>
+          </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="page-wrap">
-            <nav class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="portfolio.html">Projects</a>
-                <a href="education.html">Education</a>
-                <a href="skills.html">Skills</a>
-            </nav>
+          <!-- RIGHT: skills content -->
+          <div class="skills-content-side">
 
-            <p class="footer-copy">
-                &copy; 2026 Shaan Basu - Built with HTML5 &amp; CSS
-            </p>
-        </div>
-    </footer>
+            <article class="glass-card skill-category reveal">
+              <h2>Languages</h2>
+              <div class="skill-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Java</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">C++</span>
+                <span class="tag">PHP</span>
+              </div>
+            </article>
+
+            <article class="glass-card skill-category reveal">
+              <h2>Web Development</h2>
+              <div class="skill-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+              </div>
+            </article>
+
+            <article class="glass-card skill-category reveal">
+              <h2>Tools &amp; Platforms</h2>
+              <div class="skill-tags">
+                <span class="tag">Git</span>
+                <span class="tag">Docker</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">MySQL</span>
+              </div>
+            </article>
+
+            <article class="glass-card skill-category reveal">
+              <h2>Databases</h2>
+              <div class="skill-tags">
+                <span class="tag">MySQL</span>
+              </div>
+            </article>
+
+            <article class="glass-card skill-category reveal">
+              <h2>Soft Skills</h2>
+              <div class="skill-tags">
+                <span class="tag">Problem Solving</span>
+                <span class="tag">Team Work</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Adaptability</span>
+              </div>
+            </article>
+
+            <article class="glass-card skill-category reveal">
+              <h2>Other</h2>
+              <div class="skill-tags">
+                <span class="tag">Responsive Design</span>
+                <span class="tag">UI/UX Design</span>
+                <span class="tag">Version Control</span>
+                <span class="tag">Agile</span>
+              </div>
+            </article>
+
+          </div><!-- /skills-content-side -->
+        </div><!-- /skills-page-layout -->
+      </div><!-- /page-wrap -->
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="page-wrap">
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="skills.html">Skills</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 Shaan Basu — Built with HTML5 &amp; CSS</p>
+    </div>
+  </footer>
+
+  <script src="JS/galaxy.js"></script>
 </body>
 </html>
