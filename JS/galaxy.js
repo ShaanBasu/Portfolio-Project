@@ -197,26 +197,63 @@
   }
 
   /* ──────────────────────────────────────────────────────────
-     3. SCROLL-DRIVEN VINE GROWTH
+     3. SCROLL-DRIVEN VINE GROWTH (centred vine)
   ────────────────────────────────────────────────────────── */
   function initVine() {
-    var vinePath = document.getElementById('main-vine');
-    if (!vinePath) return;
+    var stem     = document.getElementById('vine-stem');
+    var branches = document.querySelectorAll('.vine-branch');
+    var leaves   = document.querySelectorAll('.vine-leaf');
 
-    /* Measure SVG natural length */
-    var len = vinePath.getTotalLength();
-    vinePath.style.strokeDasharray  = len;
-    vinePath.style.strokeDashoffset = len;
+    /* Legacy side vine (kept for skills/education pages) */
+    var legacyVine = document.getElementById('main-vine');
+    if (legacyVine) {
+      var legLen = legacyVine.getTotalLength ? legacyVine.getTotalLength() : 2640;
+      legacyVine.style.strokeDasharray  = legLen;
+      legacyVine.style.strokeDashoffset = legLen;
+    }
+
+    if (!stem) return;
+
+    /* Read the actual path length so this stays in sync with the SVG geometry */
+    var STEM_LEN = stem.getTotalLength ? Math.ceil(stem.getTotalLength()) : 3500;
+    stem.style.strokeDasharray  = STEM_LEN;
+    stem.style.strokeDashoffset = STEM_LEN;
+
+    /* Branch / leaf reveal thresholds (progress 0–1) */
+    var BRANCH_COUNT = branches.length;
+    var LEAF_COUNT   = leaves.length;
 
     function onScroll() {
-      var scrolled   = window.scrollY;
-      var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
-      var progress   = docHeight > 0 ? Math.min(scrolled / docHeight, 1) : 0;
-      vinePath.style.strokeDashoffset = len * (1 - progress);
+      var scrolled  = window.scrollY;
+      var docH      = document.documentElement.scrollHeight - window.innerHeight;
+      var prog      = docH > 0 ? Math.min(scrolled / docH, 1) : 0;
+
+      stem.style.strokeDashoffset = STEM_LEN * (1 - prog);
+
+      if (legacyVine) {
+        legacyVine.style.strokeDashoffset = (legacyVine._len || 2640) * (1 - prog);
+      }
+
+      /* Reveal branches as stem grows past them */
+      branches.forEach(function (b, i) {
+        var threshold = (i + 1) / (BRANCH_COUNT + 1) * 0.85;
+        b.style.opacity = prog >= threshold ? '0.65' : '0';
+      });
+
+      /* Reveal leaves slightly after their branch */
+      leaves.forEach(function (l, i) {
+        var threshold = (i + 1) / (LEAF_COUNT + 1) * 0.88;
+        l.style.opacity = prog >= threshold ? '0.75' : '0';
+      });
+    }
+
+    /* Store length on legacy vine for reuse */
+    if (legacyVine && legacyVine.getTotalLength) {
+      legacyVine._len = legacyVine.getTotalLength();
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); /* run once */
+    onScroll();
   }
 
   /* ──────────────────────────────────────────────────────────
