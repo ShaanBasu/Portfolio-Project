@@ -1099,3 +1099,306 @@ footer .page-wrap {
   .planet-ring:nth-child(2) { width: 14.5rem; height: 14.5rem; }
   .planet-ring:nth-child(3) { width: 16rem; height: 16rem; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   THREE.JS BACKGROUND CANVAS
+   ══════════════════════════════════════════════════════════ */
+#three-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* Content must sit above the 3D canvas */
+#page-content { position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════════════════════════
+   HERO — two-column: text left, 3D planet visible right
+   ══════════════════════════════════════════════════════════ */
+#hero {
+  /* Override old center alignment — now two-column */
+  text-align: left;
+  padding-top: max(10rem, 18vh);
+  padding-bottom: var(--sp-2xl);
+}
+
+.hero-inner {
+  /* Two-column layout */
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-xl);
+}
+
+.hero-text {
+  max-width: 46rem;
+  flex: 1;
+}
+
+.hero-subtitle { margin: 0 0 var(--sp-xl); }
+
+.hero-actions { justify-content: flex-start; }
+
+.hero-planet-label {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-sm);
+  pointer-events: none;
+  min-width: 14rem;
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PLANET INDICATOR LABELS
+   ══════════════════════════════════════════════════════════ */
+.planet-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(3,4,10,0.55);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 0.35rem 0.85rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  animation: fadeUp 0.9s ease 2.5s forwards;
+}
+
+.planet-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  animation: dot-pulse 2.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.planet-indicator-dot--mars    { background: #cc5522; box-shadow: 0 0 8px #cc5522; }
+.planet-indicator-dot--saturn  { background: #ddaa44; box-shadow: 0 0 8px #ddaa44; }
+.planet-indicator-dot--neptune { background: #2244cc; box-shadow: 0 0 8px #2244cc; }
+
+@keyframes dot-pulse {
+  0%,100% { transform: scale(1);   opacity: 0.8; }
+  50%     { transform: scale(1.5); opacity: 1;   }
+}
+
+.planet-indicator-text {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.section-planet-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--sp-xl);
+  background: rgba(3,4,10,0.5);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 0.35rem 0.85rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   CENTRED VINE — scrolls down the middle of the page
+   ══════════════════════════════════════════════════════════ */
+.vine-center-wrap {
+  position: absolute;
+  left: 50%;
+  top: 100vh; /* starts after hero */
+  transform: translateX(-50%);
+  width: 120px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+#vine-stem {
+  stroke-dasharray: 3500;
+  stroke-dashoffset: 3500;
+  transition: stroke-dashoffset 0.06s linear;
+}
+
+.vine-branch {
+  transition: opacity 0.4s ease;
+}
+
+.vine-leaf {
+  transition: opacity 0.5s ease;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION BACKGROUNDS — semi-transparent so 3D shows through
+   ══════════════════════════════════════════════════════════ */
+/* Override solid background on sections */
+#about, #skills, #education, #projects, #contact {
+  background: transparent;
+}
+
+/* Dark overlay behind text for readability */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 85% 70% at 50% 50%, rgba(3,4,10,0.72), rgba(3,4,10,0.42));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Section content above overlay */
+.section > .page-wrap { position: relative; z-index: 1; }
+
+/* ══════════════════════════════════════════════════════════
+   NEW 3D PROJECT CARDS
+   ══════════════════════════════════════════════════════════ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--sp-lg);
+}
+
+.project-card {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.6),
+    0 0 40px color-mix(in srgb, var(--glow, #35d2ff) 20%, transparent);
+}
+
+/* Glow layer behind card */
+.project-card-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 30% 30%,
+    color-mix(in srgb, var(--glow, #35d2ff) 22%, transparent),
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-card:hover .project-card-glow { opacity: 1; }
+
+.project-card-inner {
+  position: relative;
+  z-index: 1;
+  background: rgba(8, 10, 22, 0.88);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--r-lg);
+  padding: var(--sp-lg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card:hover .project-card-inner {
+  border-color: color-mix(in srgb, var(--glow, #35d2ff) 45%, transparent);
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-sm);
+}
+
+.project-planet-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: dot-pulse 3s ease-in-out infinite;
+}
+
+.project-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.project-description {
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+  line-height: 1.65;
+  margin-bottom: var(--sp-md);
+  flex-grow: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-md);
+}
+
+.project-links {
+  display: flex;
+  gap: var(--sp-sm);
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+/* Small button variant */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+/* ══════════════════════════════════════════════════════════
+   UPDATED RESPONSIVE
+   ══════════════════════════════════════════════════════════ */
+@media (max-width: 820px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-text { max-width: 100%; }
+  .hero-actions { justify-content: center; }
+  .hero-planet-label { min-width: auto; }
+  .vine-center-wrap { display: none; } /* hide vine on mobile for performance */
+}
+
+/* ── Main needs position relative for vine positioning ── */
+main { position: relative; }
+
+.vine-center-wrap {
+  position: absolute;
+  left: 50%;
+  top: 100vh;   /* start after the hero viewport */
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 120px;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+.vine-center-wrap svg {
+  width: 120px;
+  height: 100%;
+  display: block;
+}

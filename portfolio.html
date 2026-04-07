@@ -27,10 +27,6 @@
 
   <main>
 
-    <!-- ══════════════════════════════════════════════════
-         PROJECTS — Interactive Solar System
-         Each project = a planet orbiting the sun
-         ══════════════════════════════════════════════════ -->
     <section class="solar-hero section">
       <div class="page-wrap">
 
@@ -38,23 +34,24 @@
         <h1 class="section-title">Project Solar System</h1>
         <div class="section-divider"></div>
         <p style="color:var(--ink-muted);font-size:0.9rem;margin-bottom:var(--sp-lg);">
-          Each planet is a project. Click a planet to explore its details.
+          Each planet is a project orbiting the sun. Click a planet to explore its details.
         </p>
 
-        <!-- Solar system canvas + info panel wrapper -->
+        <!-- Solar system canvas + panel wrapper -->
         <div class="solar-canvas-wrap">
-          <canvas id="solar-canvas" aria-label="Interactive solar system showing projects as orbiting planets"></canvas>
+          <canvas id="solar-canvas"
+            aria-label="Interactive 3D solar system showing projects as orbiting planets"></canvas>
 
-          <!-- Project info panel (shown on planet click) -->
+          <!-- Project info panel -->
           <div class="project-info-panel" id="project-panel" role="region" aria-live="polite">
             <button class="panel-close" id="panel-close" aria-label="Close panel">✕</button>
-            <h2 class="panel-title"  id="panel-title"></h2>
-            <p  class="panel-desc"   id="panel-desc"></p>
-            <div class="panel-tags"  id="panel-tags"></div>
+            <h2 class="panel-title" id="panel-title"></h2>
+            <p  class="panel-desc"  id="panel-desc"></p>
+            <div class="panel-tags" id="panel-tags"></div>
             <div class="panel-links">
-              <a id="panel-link"   class="btn btn-primary"  href="#"
-                 target="_blank" rel="noopener">View Project</a>
-              <a id="panel-github" class="btn btn-ghost"    href="#"
+              <a id="panel-link"   class="btn btn-primary" href="#"
+                 target="_blank" rel="noopener">View Project ↗</a>
+              <a id="panel-github" class="btn btn-ghost"   href="#"
                  target="_blank" rel="noopener">GitHub ↗</a>
             </div>
           </div>
@@ -78,10 +75,13 @@
         <a href="education.html">Education</a>
         <a href="skills.html">Skills</a>
       </nav>
-      <p class="footer-copy">&copy; 2026 Shaan Basu — Built with HTML5 &amp; CSS</p>
+      <p class="footer-copy">&copy; 2026 Shaan Basu — Built with HTML5, CSS &amp; Three.js</p>
     </div>
   </footer>
 
+  <!-- Three.js CDN (r158) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
   <script src="JS/solar.js"></script>
+
 </body>
 </html>
