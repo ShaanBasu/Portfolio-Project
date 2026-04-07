@@ -1,84 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/reset.css">
-    <link rel="stylesheet" href="CSS/styles2.css">
-    <title>Education — Shaan Basu</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/reset.css">
+  <link rel="stylesheet" href="CSS/cosmic.css">
+  <title>Education — Shaan Basu</title>
 </head>
 <body>
-    <!-- Header / Nav -->
-    <header>
-        <div class="page-wrap">
-            <div class="brand">SB://Portfolio</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="education.html" class="active">Education</a></li>
-                    <li><a href="portfolio.html">Projects</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Education Section -->
-        <section id="education" class="section">
-            <div class="page-wrap">
-                <p class="section-label">03 -- Education</p>
-                <h1 id="education-title" class="section-title">Education &amp; Qualifications</h1>
-                <div class="section-divider"></div>
+  <!-- ── Header / Nav ── -->
+  <header>
+    <div class="page-wrap">
+      <div class="brand">SB://Portfolio</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="education.html" class="active">Education</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-                <div class="glass-card reveal">
-                    <ol class="timeline">
-                        <li class="timeline-item">
-                            <time class="timeline-date" datetime="2025">2025 - Present</time>
-                            <h2 class="timeline-title">Msci Computer Science</h2>
-                            <p class="timeline-place">Queen Mary University of London</p>
-                            <p>Relevant modules: Object Oriented Programming, Fundamentals of Web Technology, Automata and Formal Languages, Logic and Discrete structures, Procedural Programming</p>
-                            <p>Predicted Grade: 1st Class</p>
-                        </li>
+  <main>
 
-                        <li class="timeline-item">
-                            <time class="timeline-date" datetime="2023">2023 - 2025</time>
-                            <h2 class="timeline-title">International Baccalaureate</h2>
-                            <p class="timeline-place">Calcutta International School</p>
-                            <p>Maths, Physics, Chemistry, English SL, French Ab initio, Business Management </p>
-                            <p>IB Grade: 37/45</p>
-                        </li>
+    <!-- ══════════════════════════════════════════════════
+         EDUCATION — content · left   |   golden star · right
+         ══════════════════════════════════════════════════ -->
+    <section class="education-page-hero section">
+      <div class="page-wrap" style="width:100%;">
 
-                        <li class="timeline-item">
-                            <time class="timeline-date" datetime="2016">2016 - 2023</time>
-                            <h2 class="timeline-title">CBSE</h2>
-                            <p class="timeline-place">Indus Valley World School</p>
-                            <p>Completed CBSE examinations with focus on Mathematics, Bengali, Artificial Intelligence, English, Sciences, and Social Sciences
-                                Overall Grade: 94%
-                            </p>
-                        </li>
-                    </ol>
-                </div>
+        <p class="section-label">03 — Education</p>
+        <h1 class="section-title">Education &amp; Qualifications</h1>
+        <div class="section-divider"></div>
+
+        <div class="education-page-layout">
+
+          <!-- LEFT: education content -->
+          <div class="education-content-side">
+
+            <div class="glass-card reveal">
+              <ol class="timeline">
+
+                <li class="timeline-item">
+                  <time class="timeline-date" datetime="2025">2025 — Present</time>
+                  <h2 class="timeline-title">MSci Computer Science</h2>
+                  <p class="timeline-place">Queen Mary University of London</p>
+                  <p>Relevant modules: Object Oriented Programming, Fundamentals of Web Technology,
+                     Automata and Formal Languages, Logic and Discrete Structures, Procedural Programming</p>
+                  <p style="margin-top:0.5rem;color:var(--cyan);font-family:var(--font-mono);font-size:0.82rem;">
+                    Predicted Grade: 1st Class
+                  </p>
+                </li>
+
+                <li class="timeline-item">
+                  <time class="timeline-date" datetime="2023">2023 — 2025</time>
+                  <h2 class="timeline-title">International Baccalaureate</h2>
+                  <p class="timeline-place">Calcutta International School</p>
+                  <p>Maths, Physics, Chemistry, English SL, French Ab Initio, Business Management</p>
+                  <p style="margin-top:0.5rem;color:var(--gold);font-family:var(--font-mono);font-size:0.82rem;">
+                    IB Grade: 37/45
+                  </p>
+                </li>
+
+                <li class="timeline-item">
+                  <time class="timeline-date" datetime="2016">2016 — 2023</time>
+                  <h2 class="timeline-title">CBSE</h2>
+                  <p class="timeline-place">Indus Valley World School</p>
+                  <p>Completed CBSE examinations with focus on Mathematics, Bengali, Artificial Intelligence,
+                     English, Sciences, and Social Sciences.</p>
+                  <p style="margin-top:0.5rem;color:var(--green);font-family:var(--font-mono);font-size:0.82rem;">
+                    Overall Grade: 94%
+                  </p>
+                </li>
+
+              </ol>
             </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="page-wrap">
-            <nav class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="portfolio.html">Projects</a>
-                <a href="education.html">Education</a>
-                <a href="skills.html">Skills</a>
-            </nav>
+          </div><!-- /education-content-side -->
 
-            <p class="footer-copy">
-                &copy; 2026 Shaan Basu - Built with HTML5 &amp; CSS
-            </p>
-        </div>
-    </footer>
+          <!-- RIGHT: sticky golden planet -->
+          <div class="education-planet-side">
+            <div class="planet-scene" style="width:20rem;height:20rem;">
+              <div class="planet-ring" style="width:15rem;height:15rem;border-color:rgba(245,158,11,0.25);"></div>
+              <div class="planet-ring" style="width:17.5rem;height:17.5rem;border-color:rgba(245,158,11,0.14);animation-delay:1.2s;"></div>
+              <div class="planet-ring" style="width:20rem;height:20rem;border-color:rgba(249,115,22,0.08);animation-delay:2.4s;"></div>
+
+              <div class="planet planet-education"></div>
+            </div>
+            <p class="planet-label planet-label-gold">Academic Journey</p>
+          </div>
+
+        </div><!-- /education-page-layout -->
+      </div><!-- /page-wrap -->
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="page-wrap">
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Projects</a>
+        <a href="education.html">Education</a>
+        <a href="skills.html">Skills</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 Shaan Basu — Built with HTML5 &amp; CSS</p>
+    </div>
+  </footer>
+
+  <script src="JS/galaxy.js"></script>
 </body>
 </html>

@@ -1,299 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/reset.css">
-    <link rel="stylesheet" href="CSS/styles2.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/reset.css">
+  <link rel="stylesheet" href="CSS/cosmic.css">
+  <title>Shaan Basu — Portfolio</title>
 </head>
-<body>    
-    <!-- Header / Nav -->
+<body>
+
+  <!-- ░░ Galaxy warp-speed intro canvas ░░ -->
+  <canvas id="galaxy-canvas" aria-hidden="true"></canvas>
+
+  <!-- ░░ Page content (revealed after intro) ░░ -->
+  <div id="page-content">
+
+    <!-- ── Header / Nav ── -->
     <header>
-        <div class = "page-wrap">
-            <div class = "brand">SB://Portfolio</div>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="education.html">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="portfolio.html">Projects</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="page-wrap">
+        <div class="brand">SB://Portfolio</div>
+        <nav>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="portfolio.html">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <section id = "hero">
-            <div class = "page-wrap">
-                <p class = "hero-kicker">Computer Science Student</p>
-                <h1 class = "hero-name">
-                    Hi, I'm <span>Shaan Basu</span>
-                </h1>
 
-                <p class = "hero-subtitle">
-                    Building things for the world. 
-                    Passionate about clean code, creative interfaces and working on ideas.
-                </p>
+      <!-- ══════════════════════════════════════════════════
+           HERO — Earth planet + nature vines
+           ══════════════════════════════════════════════════ -->
+      <section id="hero">
+        <!-- Canvas starfield background -->
+        <canvas id="hero-stars" aria-hidden="true"></canvas>
 
-                <div class = "hero-actions">
-                    <a href="portfolio.html" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-ghost">Get in touch</a>
-                </div>
+        <div class="page-wrap">
+          <div class="hero-inner">
+
+            <!-- Planet scene with pulse rings -->
+            <div class="planet-scene">
+              <div class="planet-ring"></div>
+              <div class="planet-ring"></div>
+              <div class="planet-ring"></div>
+
+              <div class="planet planet-hero">
+                <!-- Nature vine — left -->
+                <svg class="vine-svg vine-left" viewBox="0 0 90 140"
+                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path class="vine-path-draw"
+                    d="M 85 80 C 60 60 40 30 20 15 C 10 8 4 3 2 1"
+                    stroke="#22c55e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                  <ellipse class="vine-leaf" cx="22" cy="16" rx="10" ry="5.5"
+                    fill="#16a34a" opacity="0" transform="rotate(-40 22 16)"/>
+                  <ellipse class="vine-leaf" cx="50" cy="38" rx="9"  ry="5"
+                    fill="#22c55e" opacity="0" transform="rotate(-55 50 38)"/>
+                  <ellipse class="vine-leaf" cx="68" cy="58" rx="7"  ry="4"
+                    fill="#4ade80" opacity="0" transform="rotate(-30 68 58)"/>
+                  <circle class="vine-leaf" cx="6"  cy="4"  r="4"
+                    fill="#bbf7d0" opacity="0"/>
+                </svg>
+
+                <!-- Nature vine — right (mirrored) -->
+                <svg class="vine-svg vine-right" viewBox="0 0 90 140"
+                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                     style="transform: translateX(100%) scaleX(-1);">
+                  <path class="vine-path-draw"
+                    d="M 85 80 C 60 60 40 30 20 15 C 10 8 4 3 2 1"
+                    stroke="#22c55e" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                  <ellipse class="vine-leaf" cx="22" cy="16" rx="10" ry="5.5"
+                    fill="#16a34a" opacity="0" transform="rotate(-40 22 16)"/>
+                  <ellipse class="vine-leaf" cx="50" cy="38" rx="9"  ry="5"
+                    fill="#22c55e" opacity="0" transform="rotate(-55 50 38)"/>
+                  <ellipse class="vine-leaf" cx="68" cy="58" rx="7"  ry="4"
+                    fill="#4ade80" opacity="0" transform="rotate(-30 68 58)"/>
+                  <circle class="vine-leaf" cx="6"  cy="4"  r="4"
+                    fill="#bbf7d0" opacity="0"/>
+                </svg>
+              </div>
+            </div><!-- /planet-scene -->
+
+            <!-- Hero text -->
+            <div class="hero-text">
+              <p class="hero-kicker">Computer Science Student</p>
+              <h1 class="hero-name">Hi, I'm <span>Shaan Basu</span></h1>
+              <p class="hero-subtitle">
+                Building things for the world.
+                Passionate about clean code, creative interfaces and working on ideas.
+              </p>
+              <div class="hero-actions">
+                <a href="portfolio.html" class="btn btn-primary">View Projects</a>
+                <a href="#contact"       class="btn btn-ghost">Get in touch</a>
+              </div>
             </div>
-        </section>
+
+          </div><!-- /hero-inner -->
+        </div><!-- /page-wrap -->
+
+        <!-- Scroll hint -->
+        <div class="scroll-hint" aria-hidden="true">
+          <span class="scroll-hint-text">scroll to explore</span>
+          <div class="scroll-hint-arrow"></div>
+        </div>
+      </section><!-- /hero -->
 
 
-        <!-- About Section -->
+      <!-- Vine + sections wrapper (vine SVG absolutely positioned) -->
+      <div style="position:relative;">
+
+        <!-- ░░ Page-wide vine SVG that grows on scroll ░░ -->
+        <svg id="vine-track"
+             xmlns="http://www.w3.org/2000/svg"
+             aria-hidden="true"
+             style="position:absolute;left:0;top:0;width:50px;
+                    height:100%;overflow:visible;pointer-events:none;z-index:0;">
+          <path id="main-vine"
+            d="M25 0
+               C 8  220, 44  440, 25 660
+               C 8  880, 44 1100, 25 1320
+               C 8 1540, 44 1760, 25 1980
+               C 8 2200, 44 2420, 25 2640"
+          />
+        </svg>
+
+
+        <!-- ══════════════════════════════════════════════════
+             01 — ABOUT
+             ══════════════════════════════════════════════════ -->
         <section id="about" class="section">
-            <div class = "page-wrap">
-                <p class="section-label">01 -- About</p>
-                <h2 id="about-title" class="section-title">About Me</h2>
-                <div class="section-divider"></div>
+          <div class="page-wrap">
+            <p class="section-label">01 — About</p>
+            <h2 class="section-title">About Me</h2>
+            <div class="section-divider"></div>
 
-                <div class="about-grid glass-card reveal">
-                    <div class="about-text">
-                        <p>
-                            I'm a computer science student at Queen Mary university of London.
-                            I have a passion for web development, Artificial Intelligence and computing in general. 
-                            I enjoy building projects that not only solve real world problems but also provide a positive impact on my learning and education.
-                            I am always eager to learn new technologies and expand my skill set.
-                        </p>
-                        <br/>
-                        <p>
-                            When I'm not coding, you can find me playing basketball, volleyball or having fun playing boardgames or just vibing with music.
-                            I am currently looking for internships and graduate opportunities in the field of software engineering.
-                        </p>
-                    </div>
-
-                    <!-- Picture of me -->
-                    <figure>
-                        <img src="Images/myImage.jpeg" alt="A picture of Shaan Basu">
-                        <figcaption>Shaan Basu -- CS Student</figcaption>
-                    </figure>
-                </div>
+            <div class="about-grid glass-card reveal">
+              <div class="about-text">
+                <p>
+                  I'm a computer science student at Queen Mary University of London.
+                  I have a passion for web development, Artificial Intelligence and computing in general.
+                  I enjoy building projects that not only solve real-world problems but also provide
+                  a positive impact on my learning and education.
+                  I am always eager to learn new technologies and expand my skill set.
+                </p>
+                <br>
+                <p>
+                  When I'm not coding, you can find me playing basketball, volleyball or having fun
+                  playing board games or just vibing with music.
+                  I am currently looking for internships and graduate opportunities in software engineering.
+                </p>
+              </div>
+              <figure>
+                <img src="Images/myImage.jpeg" alt="A picture of Shaan Basu">
+                <figcaption>Shaan Basu — CS Student</figcaption>
+              </figure>
             </div>
+          </div>
         </section>
-        
-         <!-- Skills Section -->
+
+
+        <!-- ══════════════════════════════════════════════════
+             02 — SKILLS
+             ══════════════════════════════════════════════════ -->
         <section id="skills" class="section">
-            <div class = "page-wrap">
-                <div class="section-header">
-                    <div class="section-header-content">
-                        <p class="section-label">02 -- Skills</p>
-                        <h2 id="skills-title" class="section-title">Skills &amp; Achievements</h2>
-                        <div class="section-divider"></div>
-                    </div>
-                    <div class="section-header-action">
-                        <a href="skills.html" class="btn btn-ghost">Full Page →</a>
-                    </div>
-                </div>
-                
-                <div class="skills-grid reveal">
-                    <article class="glass-card skill-category">
-                        <h3>Languages</h3>
-                        <div class="skill-tags">
-                            <!-- span is a generic inline container for phrasing content. It is very useful for styling phrases. -->
-                            <span class="tag">Python</span>
-                            <span class="tag">Java</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">C++</span>
-                            <span class="tag">PHP</span>
-                        </div>
-                    </article>
-
-                    <article class="glass-card skill-category">
-                        <h3>Web Development</h3>
-                        <div class="skill-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                        </div>
-                    </article>
-
-                    <article class="glass-card skill-category">
-                        <h3>Tools</h3>
-                        <div class="skill-tags">
-                            <span class="tag">Git</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">GitHub</span>
-                            <span class="tag">MySQL</span>
-                        </div>
-                    </article>
-                </div>
+          <div class="page-wrap">
+            <div class="section-header">
+              <div class="section-header-content">
+                <p class="section-label">02 — Skills</p>
+                <h2 class="section-title">Skills &amp; Achievements</h2>
+                <div class="section-divider"></div>
+              </div>
+              <div class="section-header-action">
+                <a href="skills.html" class="btn btn-ghost">Full Page →</a>
+              </div>
             </div>
-            </section>
 
-            <!-- Education Section -->
-            <section id="education" class="section">
-            <div class = "page-wrap">
-                <div class="section-header">
-                    <div class="section-header-content">
-                        <p class="section-label">03 -- Education</p>
-                        <h2 id="education-title" class="section-title">Education &amp; Qualifications</h2>
-                        <div class="section-divider"></div>
-                    </div>
-                    <div class="section-header-action">
-                        <a href="education.html" class="btn btn-ghost">Full Page →</a>
-                    </div>
+            <div class="skills-grid reveal">
+              <article class="glass-card skill-category">
+                <h3>Languages</h3>
+                <div class="skill-tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">Java</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">C++</span>
+                  <span class="tag">PHP</span>
                 </div>
-                
+              </article>
 
-                <div class="glass-card reveal">
-                    <ol class="timeline">
-                        <li class="timeline-item">
-                            <time class="timeline-date" datetime="2025">2025 - Present</time>
-                            <h3 class="timeline-title">Msci Computer Science</h3>
-                            <p class="timeline-place">Queen Mary University of London</p>
-                            <p>Relevant modules: Object Oriented Programming, Fundamentals of Web Technology, Automata and Formal Languages, Logic and Discrete structures, Procedural Programming </p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <time class="timeline-date" datetime="2023">2023 - 2025</time>
-                            <h3 class="timeline-title"> International Baccaleaurate</h3>
-                            <p class="timeline-place">Calcutta International School</p>
-                            <p>Maths, Physics, Chemistry, English SL, French Ab initio, Business Management -- 37/45 </p>
-                        </li>
-
-                    </ol>
+              <article class="glass-card skill-category">
+                <h3>Web Development</h3>
+                <div class="skill-tags">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">React</span>
+                  <span class="tag">Node.js</span>
                 </div>
+              </article>
+
+              <article class="glass-card skill-category">
+                <h3>Tools</h3>
+                <div class="skill-tags">
+                  <span class="tag">Git</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">GitHub</span>
+                  <span class="tag">MySQL</span>
+                </div>
+              </article>
             </div>
+          </div>
         </section>
 
 
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <div class = "page-wrap">
-                <div class="section-header">
-                    <div class="section-header-content">
-                        <p class="section-label">04 -- Projects</p>
-                        <h2 id="projects-title" class="section-title">Featured Projects</h2>
-                        <div class="section-divider"></div>
-                    </div>
-                    <div class="section-header-action">
-                        <a href="portfolio.html" class="btn btn-ghost">Full Page →</a>
-                    </div>
-                </div>
-
-                <div class="projects-grid reveal">
-                    <article class="glass-card project-card">
-                        <h3 class="project-title">Instant Checkout Link</h3>
-                        <p class="project-description">
-                            A full stack project, which combines algorand's algokit with blockchain and smart contracts to help make transactions seamless and easier.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Algorand</span>
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">Algokit</span>
-                            <span class="tag">Python</span>
-                        </div>
-                    </article>
-
-                    <article class="glass-card project-card">
-                        <h3 class="project-title">PDF - Data Extractor</h3>
-                        <p class="project-description">
-                            A full-stack data-extractor which extracts structured information from resumes, contracts, invoices, & research papers locally with no API cost 
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Llama 3.2</span>
-                            <span class="tag">LangChain</span>
-                        </div>
-                    </article>
-
-                    <article class="glass-card project-card">
-                        <h3 class="project-title">Task Management App(In Progress)</h3>
-                        <p class="project-description">
-                            A collaborative task management application with real-time updates, user roles, 
-                            project organization, and deadline tracking features for team productivity.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Material-UI</span>
-                            <span class="tag">REST API</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section
-
-            <!-- Contact Section -->
-            <section id="contact" class="section">
-            <div class = "page-wrap">
-                <p class="section-label">05 -- Contact</p>
-                <h2 id="contact-title" class="section-title">Get In Touch</h2>
+        <!-- ══════════════════════════════════════════════════
+             03 — EDUCATION
+             ══════════════════════════════════════════════════ -->
+        <section id="education" class="section">
+          <div class="page-wrap">
+            <div class="section-header">
+              <div class="section-header-content">
+                <p class="section-label">03 — Education</p>
+                <h2 class="section-title">Education &amp; Qualifications</h2>
                 <div class="section-divider"></div>
-                <div class="contact-grid reveal">
-                    <div class="glass-card">
+              </div>
+              <div class="section-header-action">
+                <a href="education.html" class="btn btn-ghost">Full Page →</a>
+              </div>
+            </div>
 
-                        <!-- Contact Form -->
-                        <form action="#" method= "post">
+            <div class="glass-card reveal">
+              <ol class="timeline">
+                <li class="timeline-item">
+                  <time class="timeline-date" datetime="2025">2025 — Present</time>
+                  <h3 class="timeline-title">MSci Computer Science</h3>
+                  <p class="timeline-place">Queen Mary University of London</p>
+                  <p>Relevant modules: Object Oriented Programming, Fundamentals of Web Technology,
+                     Automata and Formal Languages, Logic and Discrete Structures, Procedural Programming</p>
+                </li>
+                <li class="timeline-item">
+                  <time class="timeline-date" datetime="2023">2023 — 2025</time>
+                  <h3 class="timeline-title">International Baccalaureate</h3>
+                  <p class="timeline-place">Calcutta International School</p>
+                  <p>Maths, Physics, Chemistry, English SL, French Ab Initio, Business Management — 37/45</p>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
 
-                            <div class="form-group">
-                                <label for="contact-name">Name</label>
-                                <input type="text"
-                                id="contact-name"
-                                name="name"
-                                placeholder="Your Name"
-                                required
-                                minlength="2"
-                                >
-                            </div>
 
-                            <div class="form-group">
-                                <label for="contact-email">Email</label>
-                                <input type="email"
-                                id="contact-email"
-                                name="email"
-                                placeholder="your@example.com"
-                                required
-                                >
-                            </div>
+        <!-- ══════════════════════════════════════════════════
+             04 — PROJECTS
+             ══════════════════════════════════════════════════ -->
+        <section id="projects" class="section">
+          <div class="page-wrap">
+            <div class="section-header">
+              <div class="section-header-content">
+                <p class="section-label">04 — Projects</p>
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-divider"></div>
+              </div>
+              <div class="section-header-action">
+                <a href="portfolio.html" class="btn btn-ghost">Full Solar System →</a>
+              </div>
+            </div>
 
-                            <div class="form-group">
-                                <label for="contact-message">Message</label>
-                                <textarea name="message" id="contact-message"
-                                placeholder="What would you like to say?"
-                                required
-                                minlength="10"
-                                ></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary"> Send Message</button>
-                        </form>
-                    </div>
-
-                    <!-- Contact Details -->
-                    <div class="glass-card">
-                        <h3 class="contact-info-heading">Contact Details</h3>
-                        <p class="contact-info-item">Email: shaanbasu77@gmail.com</p>
-                        <p class="contact-info-item">LinkedIn: www.linkedin.com/in/shaan-basu</p>
-                        <p class="contact-info-item">Github: github.com/ShaanBasu</p>
-                    </div>
+            <div class="projects-grid reveal">
+              <article class="glass-card project-card">
+                <h3 class="project-title">Instant Checkout Link</h3>
+                <p class="project-description">
+                  A full-stack project combining Algorand's Algokit with blockchain and smart contracts
+                  to make transactions seamless and easier.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">Algorand</span>
+                  <span class="tag">HTML5</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">Algokit</span>
+                  <span class="tag">Python</span>
                 </div>
-            </div> 
-            </section>
+              </article>
+
+              <article class="glass-card project-card">
+                <h3 class="project-title">PDF Data Extractor</h3>
+                <p class="project-description">
+                  A full-stack data-extractor which extracts structured information from resumes,
+                  contracts, invoices &amp; research papers locally with no API cost.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">Python</span>
+                  <span class="tag">Llama 3.2</span>
+                  <span class="tag">LangChain</span>
+                </div>
+              </article>
+
+              <article class="glass-card project-card">
+                <h3 class="project-title">Task Management App <em>(In Progress)</em></h3>
+                <p class="project-description">
+                  A collaborative task management application with real-time updates, user roles,
+                  project organisation, and deadline tracking for team productivity.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Firebase</span>
+                  <span class="tag">Material-UI</span>
+                  <span class="tag">REST API</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- ══════════════════════════════════════════════════
+             05 — CONTACT
+             ══════════════════════════════════════════════════ -->
+        <section id="contact" class="section">
+          <div class="page-wrap">
+            <p class="section-label">05 — Contact</p>
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-divider"></div>
+
+            <div class="contact-grid reveal">
+              <div class="glass-card">
+                <form action="#" method="post">
+                  <div class="form-group">
+                    <label for="contact-name">Name</label>
+                    <input type="text" id="contact-name" name="name"
+                      placeholder="Your Name" required minlength="2">
+                  </div>
+                  <div class="form-group">
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email" name="email"
+                      placeholder="your@example.com" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="contact-message">Message</label>
+                    <textarea name="message" id="contact-message"
+                      placeholder="What would you like to say?"
+                      required minlength="10"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+              </div>
+
+              <div class="glass-card">
+                <h3 class="contact-info-heading">Contact Details</h3>
+                <p class="contact-info-item">✉&nbsp; shaanbasu77@gmail.com</p>
+                <p class="contact-info-item">🔗&nbsp; linkedin.com/in/shaan-basu</p>
+                <p class="contact-info-item">🐙&nbsp; github.com/ShaanBasu</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /vine wrapper -->
+
     </main>
 
-    <!-- Footer -->
+    <!-- ── Footer ── -->
     <footer>
-        <div class = "page-wrap">
-            <nav class="footer-links">
-                <a href="#about">About</a>
-                <a href="portfolio.html">Projects</a>
-                <a href="education.html">Education</a>
-                <a href="skills.html">Skills</a>
-            </nav>
-
-            <p class="footer-copy">
-                &copy; 2026 Shaan Basu - Built with HTML5 &amp; CSS
-            </p>
-        </div>
+      <div class="page-wrap">
+        <nav class="footer-links">
+          <a href="#about">About</a>
+          <a href="skills.html">Skills</a>
+          <a href="education.html">Education</a>
+          <a href="portfolio.html">Projects</a>
+        </nav>
+        <p class="footer-copy">&copy; 2026 Shaan Basu — Built with HTML5 &amp; CSS</p>
+      </div>
     </footer>
+
+  </div><!-- /#page-content -->
+
+  <!-- Hero starfield (lightweight canvas) -->
+  <script>
+    (function () {
+      var c   = document.getElementById('hero-stars');
+      if (!c) return;
+      var ctx = c.getContext('2d');
+      function draw() {
+        c.width  = c.offsetWidth;
+        c.height = c.offsetHeight;
+        ctx.clearRect(0, 0, c.width, c.height);
+        for (var i = 0; i < 260; i++) {
+          var x = Math.random() * c.width;
+          var y = Math.random() * c.height;
+          var r = Math.random() * 1.4 + 0.2;
+          var a = Math.random() * 0.7 + 0.2;
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(232,238,252,' + a + ')';
+          ctx.fill();
+        }
+      }
+      draw();
+      window.addEventListener('resize', draw);
+    })();
+  </script>
+
+  <script src="JS/galaxy.js"></script>
 </body>
 </html>
