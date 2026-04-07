@@ -91,6 +91,12 @@
   scene.add(fillLight);
 
   /* ── Noise Helpers ───────────────────────────────────────── */
+  /*
+   * hash2 — same fast pseudo-random hash used in threescene.js.
+   * Constants 127.1, 311.7, 43758.5453 are standard noise-generation
+   * values: large primes for input scattering and a high-frequency
+   * multiplier to extract well-distributed fractional values.
+   */
   function hash2(x, y) { return (((Math.sin(x * 127.1 + y * 311.7) * 43758.5453) % 1) + 1) % 1; }
   function smooth(t)    { return t * t * (3 - 2 * t); }
   function lerp(a, b, t){ return a + (b - a) * t; }

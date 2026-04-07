@@ -1225,8 +1225,8 @@ footer .page-wrap {
 }
 
 #vine-stem {
-  stroke-dasharray: 3500;
-  stroke-dashoffset: 3500;
+  /* stroke-dasharray and stroke-dashoffset are set dynamically by galaxy.js
+     using getTotalLength(), keeping JS and CSS in sync automatically. */
   transition: stroke-dashoffset 0.06s linear;
 }
 

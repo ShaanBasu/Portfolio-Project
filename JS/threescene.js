@@ -37,6 +37,13 @@
   scene.add(ambLight);
 
   /* ── Noise Helpers ───────────────────────────────────────── */
+  /*
+   * hash2 — fast pseudo-random hash for (x,y) integer lattice points.
+   * Uses standard noise-generation constants:
+   *   127.1 / 311.7  — large primes that scatter nearby inputs widely
+   *   43758.5453      — large multiplier to push fractional parts into
+   *                     a well-distributed 0–1 range after fmod.
+   */
   function hash2(x, y) {
     return (((Math.sin(x * 127.1 + y * 311.7) * 43758.5453) % 1) + 1) % 1;
   }

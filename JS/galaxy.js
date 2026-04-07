@@ -214,8 +214,10 @@
 
     if (!stem) return;
 
-    /* Total length of the centre stem */
-    var STEM_LEN = 3500; /* matches stroke-dasharray in CSS */
+    /* Read the actual path length so this stays in sync with the SVG geometry */
+    var STEM_LEN = stem.getTotalLength ? Math.ceil(stem.getTotalLength()) : 3500;
+    stem.style.strokeDasharray  = STEM_LEN;
+    stem.style.strokeDashoffset = STEM_LEN;
 
     /* Branch / leaf reveal thresholds (progress 0–1) */
     var BRANCH_COUNT = branches.length;
