@@ -333,7 +333,6 @@
 
   /* Raycaster for click detection */
   var raycaster = new THREE.Raycaster();
-  raycaster.params.Points = { threshold: 0.5 };
   var mouse     = new THREE.Vector2();
   var paused    = false;
 
