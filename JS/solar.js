@@ -27,9 +27,9 @@
       link:   'https://github.com/ShaanBasu/Instant-Checkout-Link',
       github: 'https://github.com/ShaanBasu',
       color:  0x35d2ff,
-      orbit:  2.6,
-      speed:  0.0045,
-      scale:  0.55,
+      orbit:  3.2,
+      speed:  0.0014,
+      scale:  0.82,
       rings:  false
     },
     {
@@ -39,9 +39,9 @@
       link:   'https://github.com/ShaanBasu/PDF-Data-Extractor',
       github: 'https://github.com/ShaanBasu',
       color:  0x8b5cf6,
-      orbit:  4.0,
-      speed:  0.0030,
-      scale:  0.48,
+      orbit:  5.4,
+      speed:  0.0009,
+      scale:  0.76,
       rings:  false
     },
     {
@@ -51,9 +51,9 @@
       link:   '#',
       github: 'https://github.com/ShaanBasu',
       color:  0xf59e0b,
-      orbit:  5.6,
-      speed:  0.0020,
-      scale:  0.44,
+      orbit:  7.8,
+      speed:  0.0006,
+      scale:  0.70,
       rings:  true
     }
   ];
@@ -62,31 +62,31 @@
   var wrap   = canvas.parentElement;
   var wRect  = wrap.getBoundingClientRect();
   var W      = wRect.width  || 900;
-  var H      = Math.max(500, Math.min(680, window.innerHeight * 0.72));
+  var H      = Math.max(580, Math.min(820, window.innerHeight * 0.82));
 
   var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(W, H);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.1;
+  renderer.toneMappingExposure = 1.3;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   canvas.style.height = H + 'px';
 
   /* ── Scene & Camera ──────────────────────────────────────── */
   var scene  = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(52, W / H, 0.1, 500);
-  camera.position.set(0, 5.5, 12);
+  var camera = new THREE.PerspectiveCamera(58, W / H, 0.1, 500);
+  camera.position.set(0, 7, 15);
   camera.lookAt(0, 0, 0);
 
   /* ── Lighting ────────────────────────────────────────────── */
-  var sunPoint = new THREE.PointLight(0xfff8e0, 6, 60);
+  var sunPoint = new THREE.PointLight(0xfff8e0, 8, 80);
   sunPoint.position.set(0, 0, 0);
   scene.add(sunPoint);
 
-  var ambLight = new THREE.AmbientLight(0x0a0c1a, 1.5);
+  var ambLight = new THREE.AmbientLight(0x0a0c1a, 2.0);
   scene.add(ambLight);
 
-  var fillLight = new THREE.DirectionalLight(0x334466, 0.5);
+  var fillLight = new THREE.DirectionalLight(0x334466, 0.8);
   fillLight.position.set(-10, -5, -10);
   scene.add(fillLight);
 
@@ -227,7 +227,7 @@
   function buildSun() {
     var grp = new THREE.Group();
 
-    var sunGeo = new THREE.SphereGeometry(1, 64, 64);
+    var sunGeo = new THREE.SphereGeometry(1.2, 64, 64);
     var sunMat = new THREE.MeshPhongMaterial({
       emissive:          0xffcc00,
       emissiveIntensity: 1.0,
@@ -238,9 +238,9 @@
 
     /* Corona glow layers */
     var coroColors = [
-      { r: 1.5,  c: 0xffdd44, op: 0.18 },
-      { r: 2.0,  c: 0xff9900, op: 0.10 },
-      { r: 2.8,  c: 0xff6600, op: 0.05 }
+      { r: 1.9,  c: 0xffdd44, op: 0.22 },
+      { r: 2.6,  c: 0xff9900, op: 0.12 },
+      { r: 3.6,  c: 0xff6600, op: 0.06 }
     ];
     coroColors.forEach(function(co) {
       var cGeo = new THREE.SphereGeometry(co.r, 32, 32);
@@ -257,21 +257,21 @@
   /* ── Build Orbit Ring ────────────────────────────────────── */
   function buildOrbitRing(radius, color) {
     var pts = [];
-    for (var i = 0; i <= 200; i++) {
-      var a = (i / 200) * Math.PI * 2;
+    for (var i = 0; i <= 256; i++) {
+      var a = (i / 256) * Math.PI * 2;
       pts.push(new THREE.Vector3(Math.cos(a) * radius, 0, Math.sin(a) * radius));
     }
     var geo = new THREE.BufferGeometry().setFromPoints(pts);
-    var mat = new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.18 });
+    var mat = new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.28 });
     return new THREE.Line(geo, mat);
   }
 
   /* ── Build Starfield ─────────────────────────────────────── */
   function buildStarfield() {
-    var N = 5000;
+    var N = 8000;
     var pos = new Float32Array(N*3), col = new Float32Array(N*3);
     for (var i = 0; i < N; i++) {
-      var theta=Math.random()*Math.PI*2, phi=Math.acos(2*Math.random()-1), r=50+Math.random()*200;
+      var theta=Math.random()*Math.PI*2, phi=Math.acos(2*Math.random()-1), r=60+Math.random()*260;
       pos[i*3]=r*Math.sin(phi)*Math.cos(theta); pos[i*3+1]=r*Math.sin(phi)*Math.sin(theta); pos[i*3+2]=r*Math.cos(phi);
       var t=Math.random();
       if(t>0.92){col[i*3]=1;col[i*3+1]=0.88;col[i*3+2]=0.62;}
@@ -281,24 +281,26 @@
     var geo=new THREE.BufferGeometry();
     geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
     geo.setAttribute('color',new THREE.BufferAttribute(col,3));
-    var mat=new THREE.PointsMaterial({size:0.4,sizeAttenuation:true,vertexColors:true,transparent:true,opacity:0.85});
+    var mat=new THREE.PointsMaterial({size:0.5,sizeAttenuation:true,vertexColors:true,transparent:true,opacity:0.9});
     return new THREE.Points(geo,mat);
   }
 
   /* ── Build Label Sprite ──────────────────────────────────── */
   function buildLabel(text, color) {
     var cvs = document.createElement('canvas');
-    cvs.width = 256; cvs.height = 48;
+    cvs.width = 320; cvs.height = 56;
     var ctx = cvs.getContext('2d');
-    ctx.clearRect(0, 0, 256, 48);
-    ctx.font = '700 18px "Space Grotesk", sans-serif';
+    ctx.clearRect(0, 0, 320, 56);
+    ctx.font = '700 20px "Space Grotesk", sans-serif';
     ctx.fillStyle = '#' + new THREE.Color(color).getHexString();
     ctx.textAlign = 'center';
-    ctx.fillText(text.length > 18 ? text.slice(0, 16) + '…' : text, 128, 28);
+    ctx.shadowColor = '#' + new THREE.Color(color).getHexString();
+    ctx.shadowBlur = 12;
+    ctx.fillText(text.length > 20 ? text.slice(0, 18) + '…' : text, 160, 34);
     var tex = new THREE.CanvasTexture(cvs);
     var mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false });
     var sprite = new THREE.Sprite(mat);
-    sprite.scale.set(1.4, 0.28, 1);
+    sprite.scale.set(2.2, 0.38, 1);
     return sprite;
   }
 
@@ -308,13 +310,17 @@
 
   var planetGroups = PROJECTS.map(function(proj, idx) {
     var grp    = buildPlanet(proj);
+    /* Position planet at its orbit radius along X — the pivot's rotation.y
+       then sweeps it around the sun in a circle */
+    grp.position.set(proj.orbit, 0, 0);
+
     var pivot  = new THREE.Group();
     pivot.add(grp);
     scene.add(pivot);
 
-    /* Label */
+    /* Label above planet */
     var label = buildLabel(proj.name, proj.color);
-    label.position.set(proj.orbit, proj.scale * 1.6 + 0.1, 0);
+    label.position.set(proj.orbit, proj.scale + 0.9, 0);
     pivot.add(label);
 
     /* Orbit line */
@@ -426,12 +432,13 @@
     pLink.style.display = p.link === '#' ? 'none' : 'inline-flex';
 
     var wr   = canvas.getBoundingClientRect();
-    var left = clientX - wr.left + 20;
-    var top  = clientY - wr.top  - 20;
-    if (left + 370 > wr.width)  left = left - 390;
-    if (top  + 300 > wr.height) top  = wr.height - 310;
-    if (top < 0)  top  = 10;
-    if (left < 0) left = 10;
+    /* Try to place panel near the click but keep inside canvas */
+    var left = clientX - wr.left + 28;
+    var top  = clientY - wr.top  - 30;
+    if (left + 400 > wr.width)  left = clientX - wr.left - 420;
+    if (top  + 340 > wr.height) top  = wr.height - 350;
+    if (top < 10)  top  = 10;
+    if (left < 10) left = 10;
     panel.style.left = left + 'px';
     panel.style.top  = top  + 'px';
     panel.classList.add('visible');
@@ -445,7 +452,7 @@
   window.addEventListener('resize', function() {
     var wr2 = wrap.getBoundingClientRect();
     W = wr2.width || 900;
-    H = Math.max(500, Math.min(680, window.innerHeight * 0.72));
+    H = Math.max(580, Math.min(820, window.innerHeight * 0.82));
     renderer.setSize(W, H);
     canvas.style.height = H + 'px';
     camera.aspect = W / H;

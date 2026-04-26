@@ -688,64 +688,56 @@ nav ul li a.active { color: var(--cyan); }
 }
 
 /* ─── Contact section ────────────────────────────────────── */
-#contact .contact-grid {
+.contact-creds {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-xl);
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--sp-lg);
+  margin-top: var(--sp-lg);
 }
 
-.contact-info-heading {
-  margin-bottom: var(--sp-md);
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.contact-info-item {
-  color: var(--ink-muted);
-  margin-bottom: var(--sp-sm);
-  font-size: 0.92rem;
-}
-
-.form-group {
+.cred-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--sp-sm);
-  margin-bottom: var(--sp-md);
+  padding: var(--sp-xl) var(--sp-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--ease), transform var(--ease), box-shadow var(--ease);
+  text-align: center;
 }
 
-.form-group label {
+.cred-card:hover {
+  border-color: var(--border-h);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(53, 210, 255, 0.1);
+  color: var(--ink);
+}
+
+.cred-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.cred-label {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--cyan);
-  letter-spacing: 0.06rem;
+  letter-spacing: 0.14rem;
   text-transform: uppercase;
 }
 
-.form-group input,
-.form-group textarea {
-  background: rgba(8, 10, 20, 0.92);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
-  padding: 0.75rem var(--sp-md);
-  color: var(--ink);
-  font-size: 0.9375rem;
-  font-family: var(--font-main);
-  transition: border-color var(--ease), box-shadow var(--ease);
-  width: 100%;
+.cred-value {
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--cyan);
-  box-shadow: 0 0 0 3px rgba(53, 210, 255, 0.14);
-  outline: none;
-}
-
-.form-group textarea { resize: vertical; min-height: 8.5rem; }
-
-.form-group input:invalid:not(:placeholder-shown) { border-color: #f87171; }
-.form-group input:valid:not(:placeholder-shown)   { border-color: #34d399; }
 
 /* ─── Footer ─────────────────────────────────────────────── */
 footer {
@@ -761,7 +753,7 @@ footer .page-wrap {
   gap: var(--sp-md);
 }
 
-.footer-links { display: flex; gap: var(--sp-lg); }
+.footer-links { display: flex; gap: var(--sp-lg); flex-wrap: wrap; justify-content: center; }
 
 .footer-links a {
   font-family: var(--font-mono);
@@ -771,6 +763,28 @@ footer .page-wrap {
 }
 
 .footer-links a:hover { color: var(--cyan); }
+
+.footer-contact {
+  display: flex;
+  gap: var(--sp-xl);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: var(--sp-sm) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+
+.footer-contact-link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  transition: color var(--ease);
+  text-decoration: none;
+}
+
+.footer-contact-link:hover { color: var(--cyan); }
 
 .footer-copy {
   font-family: var(--font-mono);
@@ -978,16 +992,22 @@ footer .page-wrap {
    PORTFOLIO PAGE — Solar System
    ══════════════════════════════════════════════════════════ */
 .solar-hero {
-  min-height: 90vh;
+  min-height: 95vh;
   padding: var(--sp-2xl) 0 var(--sp-xl);
   position: relative;
   overflow: hidden;
+  background: radial-gradient(ellipse 90% 70% at 50% 60%, rgba(53,210,255,0.04), transparent 65%);
 }
 
 .solar-canvas-wrap {
   position: relative;
   width: 100%;
-  margin-top: var(--sp-xl);
+  margin-top: var(--sp-lg);
+  border-radius: var(--r-lg);
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 40px 120px rgba(0,0,0,0.7),
+    0 0 80px rgba(53,210,255,0.06);
 }
 
 #solar-canvas {
@@ -995,30 +1015,30 @@ footer .page-wrap {
   display: block;
   cursor: default;
   border-radius: var(--r-lg);
-  border: 1px solid var(--border);
 }
 
 /* Project info panel */
 .project-info-panel {
   position: absolute;
-  background: rgba(8, 10, 20, 0.95);
-  border: 1px solid var(--border);
+  background: rgba(6, 8, 18, 0.97);
+  border: 1px solid var(--border-h);
   border-radius: var(--r-lg);
   padding: var(--sp-lg);
-  max-width: 22rem;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  max-width: 26rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.92);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: scale(0.90) translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 20;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.8), 0 0 40px rgba(53,210,255,0.08);
 }
 
 .project-info-panel.visible {
   opacity: 1;
   pointer-events: all;
-  transform: scale(1);
+  transform: scale(1) translateY(0);
 }
 
 .panel-title {
