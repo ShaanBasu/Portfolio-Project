@@ -126,6 +126,8 @@
         canvas.style.display = 'none';
         var pg = document.getElementById('page-content');
         if (pg) pg.classList.add('visible');
+        var tc = document.getElementById('three-canvas');
+        if (tc) tc.classList.add('visible');
         /* Init other modules after reveal */
         initScrollReveal();
         initVine();
