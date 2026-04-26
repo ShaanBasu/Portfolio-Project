@@ -28,8 +28,8 @@
   var frame  = 0;
   var RAF_ID;
 
-  var STAR_COUNT = 1800;
-  var TOTAL_FRAMES = 200; /* ~3.3 s at 60 fps */
+  var STAR_COUNT = 2800;
+  var TOTAL_FRAMES = 240; /* ~4 s at 60 fps — slightly longer for cinematic feel */
 
   function resize() {
     W  = canvas.width  = window.innerWidth;
@@ -106,38 +106,6 @@
       if (nx < -5 || nx > W + 5 || ny < -5 || ny > H + 5) {
         stars[i] = makeStar(false);
       }
-    }
-
-    /* Planet emerging in final frames */
-    if (frame > TOTAL_FRAMES * 0.68) {
-      var prog   = (frame - TOTAL_FRAMES * 0.68) / (TOTAL_FRAMES * 0.32);
-      var pr     = prog * 88;
-      var palpha = Math.min(prog, 1);
-
-      /* Glow halo */
-      var glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, pr * 3);
-      glow.addColorStop(0,   'rgba(53,210,255,' + (palpha * 0.35) + ')');
-      glow.addColorStop(0.5, 'rgba(79,124,255,' + (palpha * 0.15) + ')');
-      glow.addColorStop(1,   'transparent');
-      ctx.fillStyle = glow;
-      ctx.beginPath();
-      ctx.arc(cx, cy, pr * 3, 0, Math.PI * 2);
-      ctx.fill();
-
-      /* Planet body */
-      var grad = ctx.createRadialGradient(
-        cx - pr * 0.3, cy - pr * 0.3, 0,
-        cx, cy, pr
-      );
-      grad.addColorStop(0,    'rgba(125,211,252,' + palpha + ')');
-      grad.addColorStop(0.25, 'rgba(45,143,224,'  + palpha + ')');
-      grad.addColorStop(0.55, 'rgba(26,93,181,'   + palpha + ')');
-      grad.addColorStop(0.82, 'rgba(13,56,120,'   + palpha + ')');
-      grad.addColorStop(1,    'rgba(6,26,64,'     + palpha + ')');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(cx, cy, pr, 0, Math.PI * 2);
-      ctx.fill();
     }
 
     if (frame < TOTAL_FRAMES) {

@@ -381,35 +381,22 @@
           <h2 class="section-title">Get In Touch</h2>
           <div class="section-divider"></div>
 
-          <div class="contact-grid reveal">
-            <div class="glass-card">
-              <form action="#" method="post">
-                <div class="form-group">
-                  <label for="contact-name">Name</label>
-                  <input type="text" id="contact-name" name="name"
-                    placeholder="Your Name" required minlength="2">
-                </div>
-                <div class="form-group">
-                  <label for="contact-email">Email</label>
-                  <input type="email" id="contact-email" name="email"
-                    placeholder="your@example.com" required>
-                </div>
-                <div class="form-group">
-                  <label for="contact-message">Message</label>
-                  <textarea name="message" id="contact-message"
-                    placeholder="What would you like to say?"
-                    required minlength="10"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-              </form>
-            </div>
-
-            <div class="glass-card">
-              <h3 class="contact-info-heading">Contact Details</h3>
-              <p class="contact-info-item">✉&nbsp; shaanbasu77@gmail.com</p>
-              <p class="contact-info-item">🔗&nbsp; linkedin.com/in/shaan-basu</p>
-              <p class="contact-info-item">🐙&nbsp; github.com/ShaanBasu</p>
-            </div>
+          <div class="contact-creds reveal">
+            <a href="mailto:shaanbasu77@gmail.com" class="cred-card">
+              <span class="cred-icon">✉</span>
+              <span class="cred-label">Email</span>
+              <span class="cred-value">shaanbasu77@gmail.com</span>
+            </a>
+            <a href="https://linkedin.com/in/shaan-basu" target="_blank" rel="noopener" class="cred-card">
+              <span class="cred-icon">🔗</span>
+              <span class="cred-label">LinkedIn</span>
+              <span class="cred-value">linkedin.com/in/shaan-basu</span>
+            </a>
+            <a href="https://github.com/ShaanBasu" target="_blank" rel="noopener" class="cred-card">
+              <span class="cred-icon">🐙</span>
+              <span class="cred-label">GitHub</span>
+              <span class="cred-value">github.com/ShaanBasu</span>
+            </a>
           </div>
         </div>
       </section>
@@ -425,6 +412,11 @@
           <a href="education.html">Education</a>
           <a href="portfolio.html">Projects</a>
         </nav>
+        <div class="footer-contact">
+          <a href="mailto:shaanbasu77@gmail.com" class="footer-contact-link">✉ shaanbasu77@gmail.com</a>
+          <a href="https://linkedin.com/in/shaan-basu" class="footer-contact-link" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a href="https://github.com/ShaanBasu" class="footer-contact-link" target="_blank" rel="noopener">🐙 GitHub</a>
+        </div>
         <p class="footer-copy">&copy; 2026 Shaan Basu — Built with HTML5, CSS &amp; Three.js</p>
       </div>
     </footer>
